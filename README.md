@@ -51,6 +51,9 @@ This version has been upgraded into a comprehensive **"Anti-Fingerprinting" Suit
 
 <img width="1417" height="192" alt="image" src="https://github.com/user-attachments/assets/a18f90e2-b3f9-4369-a637-b0b4916ee1b2" />
 
+<img width="1004" height="314" alt="image" src="https://github.com/user-attachments/assets/65e7bb96-0844-480f-ae05-a8de657a7b93" />
+
+
 ## Credits
 
 Based on the original work by [joue-quroi](https://github.com/joue-quroi).
