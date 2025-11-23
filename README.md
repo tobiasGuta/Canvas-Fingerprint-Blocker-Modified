@@ -45,6 +45,11 @@ This version has been upgraded into a comprehensive **"Anti-Fingerprinting" Suit
 3. Enable "Developer mode".
 4. Click "Load unpacked" and select the folder containing this extension.
 
+## Screenshot
+
+<img width="1285" height="132" alt="image" src="https://github.com/user-attachments/assets/9956052a-1b11-422e-8499-425f3845e472" />
+
+
 ## Credits
 
 Based on the original work by [joue-quroi](https://github.com/joue-quroi).
