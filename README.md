@@ -30,7 +30,7 @@ This version has been upgraded into a comprehensive **"Anti-Fingerprinting" Suit
 *   **Screen Resolution**: Reports a standard 1366x768 (HD Laptop) resolution with 24-bit color depth.
 *   **Platform**: Spoofs `navigator.platform` to "Win32" and `oscpu` to Windows 10.
 *   **Concurrency**: Reports 4 CPU cores and 0 touch points (Desktop profile).
-*   **Timezone**: Forces `Intl.DateTimeFormat` to report **'America/Chicago'** (Central Time).
+*   **Timezone**: Forces `Intl.DateTimeFormat` to report **'America/NewYork'** (Central Time).
 *   **Plugins**: Hides installed plugins and mimeTypes (reports empty lists).
 *   **Font Fingerprinting**: Adds 1% random noise to `offsetWidth`/`offsetHeight` measurements to fuzz font enumeration scripts.
 
