@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Canvas Blocker Test Page</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f7f5ef;
+        --card: #fffdf9;
+        --ink: #1f2933;
+        --muted: #6b7280;
+        --line: rgba(31, 41, 51, 0.12);
+        --accent: #0f766e;
+      }
+
+      body {
+        margin: 0;
+        padding: 2rem 1rem 3rem;
+        background:
+          radial-gradient(circle at top right, rgba(15, 118, 110, 0.12), transparent 32%),
+          linear-gradient(180deg, #fcfbf8 0%, var(--bg) 100%);
+        color: var(--ink);
+        font: 15px/1.55 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      main {
+        width: min(100%, 68rem);
+        margin: 0 auto;
+      }
+
+      h1,
+      h2 {
+        margin: 0 0 0.75rem;
+      }
+
+      p {
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 1rem;
+      }
+
+      pre {
+        margin: 0;
+        overflow: auto;
+        white-space: pre-wrap;
+        word-break: break-word;
+        font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+
+      canvas {
+        display: block;
+        margin-top: 0.75rem;
+        border: 1px solid var(--line);
+        max-width: 100%;
+      }
+
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 0.7rem 1rem;
+        background: var(--accent);
+        color: white;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Fingerprint Test Page</h1>
+      <p>
+        Reload this page a few times during the same browser session. The hashes should stay stable for this origin while protection is enabled, and they should change or disappear when you switch modes or turn protection off.
+      </p>
+      <p><button id="rerun" type="button">Re-run Tests</button></p>
+
+      <div class="grid">
+        <section class="card">
+          <h2>Active Protections</h2>
+          <pre id="protections-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Profile Consistency</h2>
+          <pre id="profile-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Navigator</h2>
+          <pre id="navigator-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Screen & Timezone</h2>
+          <pre id="screen-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Canvas</h2>
+          <pre id="canvas-output"></pre>
+          <canvas id="canvas-sample" width="220" height="80"></canvas>
+        </section>
+        <section class="card">
+          <h2>WebGL</h2>
+          <pre id="webgl-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Audio</h2>
+          <pre id="audio-output"></pre>
+        </section>
+        <section class="card">
+          <h2>Font Consistency</h2>
+          <pre id="font-output"></pre>
+        </section>
+      </div>
+    </main>
+    <script src="fingerprint-test.js"></script>
+  </body>
+</html>

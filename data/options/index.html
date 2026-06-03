@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Options :: Canvas Blocker - Fingerprint Protect</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+  </head>
+
+  <body>
+    <main class="page">
+      <section class="hero">
+        <p class="eyebrow">Manifest V3 Privacy Controls</p>
+        <h1>Protection Modes</h1>
+        <p class="lede">
+          Choose a starting mode, then fine-tune each protection. Changes are saved to extension storage and applied to new page reads without restarting the browser.
+        </p>
+      </section>
+
+      <section class="card">
+        <label class="stack" for="mode">
+          <span class="label-title">Mode</span>
+          <span class="hint">Modes are conservative presets. You can still customize the individual toggles below.</span>
+        </label>
+        <select id="mode">
+          <option value="basic">Basic: Canvas only</option>
+          <option value="standard">Standard: Canvas + WebGL + Audio</option>
+          <option value="strict">Strict: Canvas + WebGL + Audio + Fonts + Headers + Profile</option>
+        </select>
+      </section>
+
+      <section class="card">
+        <h2>Feature Toggles</h2>
+        <div class="grid">
+          <label class="toggle"><input type="checkbox" id="feature-canvas">Canvas protection</label>
+          <label class="toggle"><input type="checkbox" id="feature-webgl">WebGL protection</label>
+          <label class="toggle"><input type="checkbox" id="feature-audio">Audio protection</label>
+          <label class="toggle"><input type="checkbox" id="feature-font">Font protection</label>
+          <label class="toggle"><input type="checkbox" id="feature-headers">Header protections</label>
+          <label class="toggle"><input type="checkbox" id="feature-plugins">Plugin normalization</label>
+          <label class="toggle"><input type="checkbox" id="feature-screen">Screen normalization</label>
+          <label class="toggle"><input type="checkbox" id="notification">Notifications</label>
+        </div>
+        <p class="hint">
+          Header protections only remove `ETag` and `If-None-Match`, and they are off by default to avoid unnecessary cache breakage.
+          Screen normalization is intended for Strict mode. Turning it on can break page layouts and create contradictions with the browser window size, so it stays off in Standard.
+        </p>
+      </section>
+
+      <section class="card">
+        <label class="stack" for="webgl-profile">
+          <span class="label-title">WebGL Profile</span>
+          <span class="hint">Basic mode and passthrough leave WebGL vendor and renderer untouched. Standard and Strict use one stable selected profile until you change it or rotate the session.</span>
+        </label>
+        <select id="webgl-profile">
+          <option value="passthrough">Passthrough / Real WebGL</option>
+          <option value="noise-only">Disable WebGL vendor spoofing but keep WebGL hash noise</option>
+          <option value="edge-windows-intel">Common Edge/Windows Intel profile</option>
+        </select>
+        <p class="hint warning">
+          Strict mode allows WebGL renderer spoofing, but rare fake renderers can increase uniqueness. Keep Windows-only WebGL profiles paired with a Windows User-Agent/platform.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>Navigator Profile</h2>
+        <p class="hint">Hardware concurrency and device memory stay configurable without changing the User-Agent string.</p>
+        <div class="form-grid">
+          <label class="stack" for="hardware-concurrency">
+            <span class="label-title">CPU Threads</span>
+            <input type="number" id="hardware-concurrency" min="1" max="32" step="1">
+          </label>
+          <label class="stack" for="device-memory">
+            <span class="label-title">Device Memory</span>
+            <input type="number" id="device-memory" min="1" max="32" step="1">
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <label class="stack" for="dnt-mode">
+          <span class="label-title">Do Not Track Header</span>
+          <span class="hint">DNT=True can add fingerprint entropy. Strict mode removes it by default, while Basic and Standard respect the browser setting.</span>
+        </label>
+        <select id="dnt-mode">
+          <option value="respect">Respect browser default</option>
+          <option value="remove">Remove DNT header</option>
+          <option value="disable">Force DNT disabled</option>
+        </select>
+      </section>
+
+      <section class="card">
+        <h2>Allow List</h2>
+        <p class="hint">Hostnames listed here are left untouched by the extension. Separate entries with commas.</p>
+        <textarea id="list" rows="4" placeholder="example.com, accounts.example.org"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>Notification Exceptions</h2>
+        <p class="hint">Hostnames listed here still receive protection, but desktop notifications stay quiet.</p>
+        <textarea id="notification.list" rows="4" placeholder="mail.example.com"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>Debug / Active State</h2>
+        <pre id="debug-output" style="white-space: pre-wrap; font: 13px/1.5 ui-monospace, SFMono-Regular, monospace;"></pre>
+        <p class="hint warning" id="reload-warning" style="display: none; color: #b91c1c; font-weight: bold; margin-top: 10px;">
+          ⚠️ You have unsaved or recently changed settings. Please reload any open test tabs (like Cover Your Tracks or the Local Test Page) for changes to fully apply!
+        </p>
+      </section>
+
+      <section class="actions">
+        <input type="button" id="support" value="Support Development">
+        <input type="button" id="reset" value="Factory Reset">
+        <input type="button" class="primary" id="save" value="Save Options">
+        <span id="toast" aria-live="polite"></span>
+      </section>
+    </main>
+
+    <script src="index.js"></script>
+  </body>
+</html>
